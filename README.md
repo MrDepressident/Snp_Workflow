@@ -25,17 +25,20 @@ Usage
 Here are all the modifications that are required to personalize the workflow.
 
 First of all setting up/adjusting the general variables are required without changing the name of the variable:
-```snpeff_jar = "/lustre1/project/stg_00079/teaching/I0U19a_conda_2024/share/snpeff-5.2-0/snpEff.jar" # the path to snpEff
+```
+snpeff_jar = "/lustre1/project/stg_00079/teaching/I0U19a_conda_2024/share/snpeff-5.2-0/snpEff.jar" # the path to snpEff
 snpeff_genome = 'hg38' # the genome that the annotoation will be based on
 snpeff_db_folder = '/staging/leuven/stg_00079/teaching/snpeff_db' # the location of the database that will be used by snpEff
 genome_db = "/lustre1/project/stg_00079/teaching/hg38_21/chr21.fa" # the path to the genome that will be used for mapping the reads and variant calling
 ```
 Then fetching all the sample files that we be analyzed are required:
-```sample_names_with_ext, = glob_wildcards("/staging/leuven/stg_00079/teaching/1000genomes/{sample}.fq.gz")  # here we get all the raw samples that are located to a specific directory
+```
+sample_names_with_ext, = glob_wildcards("/staging/leuven/stg_00079/teaching/1000genomes/{sample}.fq.gz")  # here we get all the raw samples that are located to a specific directory
 filtered_samples = [name.rsplit('.fq.gz', 1)[0] for name in sample_names_with_ext if re.match(r"HG0\d{3}9", name)] # from all samples that we got before here we chose to analyze only a specific proportion taking out the extention of each sample for flexibility reasons.
 ```
 Here change the path of the selected samples:
-```rule copy_files:
+```
+rule copy_files:
     input:
         raw=expand("/staging/leuven/stg_00079/teaching/1000genomes/{file}.fq.gz", file=filtered_samples), #modify this line
         report_init="reports/workflow_report.log",
@@ -50,7 +53,8 @@ Check that all variants are located in chromosome 21, if not, report it
         fi
 ```
 Here change the names of the genes of your interest:
-```awk 'BEGIN {{ FS=OFS="\t" }} 
+```
+awk 'BEGIN {{ FS=OFS="\t" }} 
         /^#/ {{ print; next }} 
         {{ 
             n = split($8, info, ";"); 
@@ -77,7 +81,8 @@ Here change the names of the genes of your interest:
         }}
 ```
 In the last rule change the genes names:
-```genes_of_interest = {'APP', 'SOD1', 'DYRK1A'}
+```
+genes_of_interest = {'APP', 'SOD1', 'DYRK1A'}
 ```
 To run the analysis workflow it is recommended to do it with an interractive session or even better as a batch job. The context of the slurm file as an example is in the slurm.txt file in the repository.
 Changing the path to the environment with the depedencies, the parameters and the paths is required.
