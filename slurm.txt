@@ -1,0 +1,18 @@
+#!/bin/bash
+#SBATCH --account=lp_edu_large_omics
+#SBATCH --job-name=snakemake_job
+#SBATCH --partition=batch
+#SBATCH --cluster="wice"
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=3
+#SBATCH --time=00:30:00
+#SBATCH --mem=5GB
+#SBATCH --output=/data/leuven/359/vsc35909/snakemake_assignment/output_slurm_%j.log
+
+# Activate our conda environment
+export PATH=/lustre1/project/stg_00079/teaching/I0U19a_conda_2024/bin/:$PATH
+
+# Run the snakemake command and generate the report
+snakemake --cores 3 -s /data/leuven/359/vsc35909/snakemake_assignment/Snakefile
+snakemake --cores 3 -s /data/leuven/359/vsc35909/snakemake_assignment/Snakefile --report /data/leuven/359/vsc35909/snakemake_assignment/report.html
