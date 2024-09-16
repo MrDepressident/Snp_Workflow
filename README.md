@@ -91,9 +91,16 @@ To submit the job use the command ```sbatch my_slurm_job.sh```
 Depedencies
 
 bwa 0.7.17-r1188
+
 FastQC v0.12.1
+
 bcftools 1.19
+
 vt
+
 SnpEff 5.2
+
 Python 3.10.13
+
 snakemake 7.32.4
+
