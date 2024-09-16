@@ -86,7 +86,7 @@ genes_of_interest = {'APP', 'SOD1', 'DYRK1A'}
 ```
 To run the analysis workflow it is recommended to do it with an interractive session or even better as a batch job. The context of the slurm file as an example is in the slurm.txt file in the repository.
 Changing the path to the environment with the depedencies, the parameters and the paths is required.
-To submit the job use the command sbatch my_slurm_job.sh
+To submit the job use the command ```sbatch my_slurm_job.sh```
 
 Depedencies
 
