@@ -5,7 +5,7 @@ This is a snakemake workflow taking as initial input sequenced genomes by illumi
 2) a report in HTML format where it can be seen if there was any failures during the run of the workflow
 3) a compressed file which contains the report in txt format and the a heatmap which associates the number of SNPs that were found to the patients.
 
-> Description
+##### Description
 
 The rules that are executed during in the analysis are given with the exact order:
 1) ```rule init_report``` it initiates the report that will be given at the end
