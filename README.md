@@ -1,4 +1,4 @@
-Details
+### Details
 
 This is a snakemake workflow taking as initial input sequenced genomes by illumina technologies and giving back:
 1) a .vcf file with all the SNPs related to the given genes (here related with AD)
