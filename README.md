@@ -1,11 +1,11 @@
-### Details
+##### Details
 
 This is a snakemake workflow taking as initial input sequenced genomes by illumina technologies and giving back:
 1) a .vcf file with all the SNPs related to the given genes (here related with AD)
 2) a report in HTML format where it can be seen if there was any failures during the run of the workflow
 3) a compressed file which contains the report in txt format and the a heatmap which associates the number of SNPs that were found to the patients.
 
-Description
+###### Description
 
 The rules that are executed during in the analysis are given with the exact order:
 1) ```rule init_report``` it initiates the report that will be given at the end
@@ -19,7 +19,7 @@ The rules that are executed during in the analysis are given with the exact orde
 9) ```rule plot_cleaned_quality_scores``` works as a bonus step, checking that all snps have quality above 20 and produces in the report a histogram
 10) ```rule plot_gene_snp_heatmap``` takes as input the genes.vcf file and extracts the SNP counts for the specified genes per individual and plots the final heatmap.
 
-Usage
+###### Usage
 
 
 Here are all the modifications that are required to personalize the workflow.
@@ -88,7 +88,7 @@ To run the analysis workflow it is recommended to do it with an interractive ses
 Changing the path to the environment with the depedencies, the parameters and the paths is required.
 To submit the job use the command ```sbatch my_slurm_job.sh```
 
-Depedencies
+###### Depedencies
 
 bwa 0.7.17-r1188
 
